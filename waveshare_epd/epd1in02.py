@@ -260,14 +260,14 @@ class EPD:
                         buf[int((newx + newy*self.width) / 8)] &= ~(0x80 >> (y % 8))
         return buf
 
-    def Display(self, image):
+    def display(self, image):
         if (image == None):
             return
-        # Width = (self.width % 8 == 0)? (self.width / 8 ): (self.width / 8 + 1)
+        # Width = (self.width % 8 == 0)? (self.width // 8 ): (self.width // 8 + 1)
         if(self.width % 8 == 0):
-            Width = self.width / 8
+            Width = self.width // 8
         else:
-            Width = self.width / 8 + 1
+            Width = self.width // 8 + 1
             
         self.send_command(0x10)
         for j in range(0, self.height):
@@ -281,11 +281,11 @@ class EPD:
         self.TurnOnDisplay()
         
     def Clear(self):
-        # Width = (self.width % 8 == 0)? (self.width / 8 ): (self.width / 8 + 1)
+        # Width = (self.width % 8 == 0)? (self.width // 8 ): (self.width // 8 + 1)
         if(self.width % 8 == 0):
-            Width = self.width / 8
+            Width = self.width // 8
         else:
-            Width = self.width / 8 + 1
+            Width = self.width // 8 + 1
             
         Height = self.height
         
@@ -312,11 +312,11 @@ class EPD:
         self.send_data(127)  #y-end
         self.send_data(0x00)
        
-        # Width = (self.width % 8 == 0)? (self.width / 8 ): (self.width / 8 + 1)
+        # Width = (self.width % 8 == 0)? (self.width // 8 ): (self.width // 8 + 1)
         if(self.width % 8 == 0):
-            Width = self.width / 8
+            Width = self.width // 8
         else:
-            Width = self.width / 8 + 1
+            Width = self.width // 8 + 1
             
         Height = self.height
         # send data

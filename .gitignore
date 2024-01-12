@@ -1,2 +1,6 @@
 
 api_key.py
+.DS_Store
+.vscode/
+__pycache__/
+charts/*
