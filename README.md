@@ -25,7 +25,9 @@ apt install python3-pil python3-matplotlib python3-requests
 
 * Clone this repository
 * Create Tibber API key at least with `homes` and `price` scope. Additional scopes are not used!
-    * Put your tibber key in the file `configuration.py`
+    * Put your tibber key in the file `configuration.py`!
+* Run the `create_price_chart.py` to create the first chart
+* Run the `chart_to_display.sh` to display the chart on the eink display
 
 ### Optional: Disable the LED
 
@@ -45,16 +47,27 @@ Open the cron of the user with `crontab -e`. And add the following lines:
 
 This updates the chart every hour and displays it on the eink display.
 
-# Local development - Open for pull requests ;-) 
+# Dependencies
 
-Install following:
+## Packages with pip3
 
 ```
-pip3 install matplotlib
-pip3 install requests
+pip3 install matplotlib requests chardet pil ply numpy certifi
 ```
 
 Start the `create_price_chart.py` and watch the files in the `charts/` folder
+
+## Packages with Debian/Ubuntu
+
+    ```
+    apt install python3-pil python3-matplotlib python3-requests python3-numpy python3-chardet python3-certifi
+    ```
+
+## Packages for MacOS with Homebrew
+
+    ```
+    brew install python-mathplotlib python-requests python-urllib3 python-chardet numpy pillow certifi
+    ```
 
 # Warranty & Licensing
 
