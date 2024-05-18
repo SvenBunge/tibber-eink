@@ -2,8 +2,10 @@
 import logging
 from waveshare_epd import epd7in5b_V2
 from PIL import Image
+from create_price_chart import PriceChart
 
-logging.basicConfig(level=logging.DEBUG)
+# Display waveshare debug messages
+# logging.basicConfig(level=logging.DEBUG)
 
 def schreibe_display():
     epd = None
@@ -17,6 +19,7 @@ def schreibe_display():
         #logging.info("4.read bmp file on window")
         blk_img = Image.open("charts/chart_blk.png")
         red_img = Image.open("charts/chart_red.png")
+        #         blk_img, red_img = PriceChart().generate_chart()
         epd.display(epd.getbuffer(blk_img), epd.getbuffer(red_img))
         
     except IOError as e:
