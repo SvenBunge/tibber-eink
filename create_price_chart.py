@@ -11,7 +11,7 @@ from io import BytesIO
 # Set the API endpoint URL and request headers
 url = "https://api.tibber.com/v1-beta/gql"
 headers = {
-        "Authorization": 'Bearer ' + configuration.tibber_api_key,
+        "Authorization": 'Bearer ' + configuration.API_KEY,
         "Content-Type": "application/json",
     }
 
