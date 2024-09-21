@@ -4,18 +4,18 @@ Inspired by myself but driven by https://www.youtube.com/techpirat
 
 ## Preconditions
 
-* Raspberry PI 2 Zero WH
+* Raspberry Pi Zero WH or Pi Zero 2 WH with Raspberry Pi OS (Bookworm)
 * 7.5 eink display with red/black (Waveshare 7.5inch HD e-Paper HAT (B))
 * HAT of the display that is on top of your Raspberry
 
 ## Steps to install
 
-* Install Raspberian OS WITHOUT UI - **Min. Bookworm to get Python 3.11!**
-* Configure the basics using HDML+Keyboard
+* Install Raspberry Pi OS (UI not needed, so it's best to boot in text mode) - **Min. Bookworm to get Python 3.11!**
+* Configure the basics using HDMI+Keyboard (or setup the Pi using SSH directly from the SD card)
     * Open raspi-config
         * Setting up SSH
         * Setting up Wifi
-        * Enable SPI
+        * Enable SPI (required to connect the Waveshare Display!)
 * Install required python packages
 
 ```
