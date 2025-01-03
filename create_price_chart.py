@@ -62,6 +62,7 @@ class PriceChart:
     tomorrow_data = self.transform_data(price_infos["tomorrow"])
 
     # fill tomorrow with empty entries
+    # falls die Preise für morgen noch nicht existieren
     if (len(tomorrow_data) == 0): 
       for x in range(0, 24):
         tomorrow_data.append({'total': float('nan'), 'startsAt': str(x).zfill(2), 'level': 'NORMAL'})
@@ -155,6 +156,21 @@ class PriceChart:
     text_on_graphics.append(plt.annotate('morgen', xy=(0.51, 0.95), xycoords='axes fraction'))
 
     title = fig.suptitle("Strompreise", fontsize=32, ha="left", fontweight='normal', position=(0.02, 1))
+
+    # Preis für die aktuelle Stunde
+    # aktuelle Stunde
+    hour_now = int(datetime.now().strftime("%-H"))
+    
+    if hour_now < len(today_data):
+      aktueller_preis = today_data[hour_now]["total"]
+    else:
+      aktueller_preis = "n/a"
+
+    fig.text(0.53, 0.95, "Aktuell:          " + str(aktueller_preis) + " ct/kWh", fontsize=18, color="black")
+
+    # Ausgabe des Durchschnittspreises, funktioniert aktuell nur, wenn bereits die Preise
+    # für morgen geladen wurden
+    # fig.text(0.53, 0.91, "Ø-Preis heute:      " + str(round(v_avg, 2)) + " ct/kWh", fontsize=14, color="black")  
 
     # Storing images
     fig.set_size_inches(configuration.display_pixels[0]/100, configuration.display_pixels[1]/100)
